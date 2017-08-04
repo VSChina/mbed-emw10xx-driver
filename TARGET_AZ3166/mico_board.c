@@ -258,8 +258,8 @@ const platform_logic_partition_t mico_partitions[] =
     {
         .partition_owner = MICO_FLASH_EMBEDDED,
         .partition_description = "Application",
-        .partition_start_addr = 0x08008000,
-        .partition_length = 0xF8000,   //992k bytes
+        .partition_start_addr = 0x0800C000,
+        .partition_length = 0xF4000,   //992k bytes
         .partition_options = PAR_OPT_READ_EN | PAR_OPT_WRITE_DIS,
     },
     [MICO_PARTITION_ATE] =
