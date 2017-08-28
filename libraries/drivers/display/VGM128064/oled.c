@@ -31,7 +31,7 @@ static void delay_ms(u16 nms);
 static uint8_t _oled_avalid = 0;
 /* I2C device */
 mico_i2c_device_t ssd1106_i2c_device = {
-  OLED_I2C_PORT, 0x3C, I2C_ADDRESS_WIDTH_7BIT, I2C_STANDARD_SPEED_MODE
+  OLED_I2C_PORT, 0x3C, I2C_ADDRESS_WIDTH_7BIT, I2C_HIGH_SPEED_MODE
 };
 
 OSStatus ssd1106_i2c_bus_write(uint8_t reg_addr, uint8_t *reg_data, uint8_t cnt)
