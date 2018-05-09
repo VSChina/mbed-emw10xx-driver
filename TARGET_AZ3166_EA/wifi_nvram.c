@@ -14,35 +14,15 @@
  * limitations under the License.
  */
 
-#include "platform_peripheral.h"
-#include "stm32f412zx.h"
+#include <stdint.h>
+#include <wifi_nvram_image.h>
 
-RTC_HandleTypeDef RTCHandle;
-
-OSStatus platform_mcu_powersave_disable( void )
+uint32_t host_platform_memory_wifi_nvram_size( void )
 {
-    return kUnsupportedErr;
+    return sizeof(wifi_nvram_image);
 }
 
-OSStatus platform_mcu_powersave_enable( void )
+uint8_t* host_platform_read_wifi_nvram_image( int offset )
 {
-    return kUnsupportedErr;
+    return (uint8_t*) &wifi_nvram_image[offset];
 }
-
-void platform_mcu_enter_standby( uint32_t secondsToWakeup )
-{
-    time_t seconds;
-    struct time * timeinfo;
-
-    rtc_init();
-    //clear WUF flag
-    SET_BIT(PWR->CR , (PWR_FLAG_WU) << 2U);
-
-    RTCHandle.Instance = RTC;
-
-    HAL_RTCEx_SetWakeUpTimer_IT(&RTCHandle, secondsToWakeup,
-                                    RTC_WAKEUPCLOCK_CK_SPRE_16BITS);
-
-    HAL_PWR_EnterSTANDBYMode( );
-}
-
