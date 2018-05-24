@@ -32,7 +32,10 @@
 
 #ifndef __CheckSumUtils_h__
 #define __CheckSumUtils_h__
-
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 #include "mico_common.h"
 
 
@@ -164,6 +167,9 @@ void CRC16_Final( CRC16_Context*inContext, uint16_t *outResult );
 /**
   * @}
   */
+#ifdef __cplusplus
+}
+#endif
 #endif //__CheckSumUtils_h__
 
 
